@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Bienvenue {{prenom || 'invité'}} !</h2>
+
+  <div class="mb-3">
+    <label for="prenom" class="form-label">Entrez votre prénom :</label>
+    <input
+      id="prenom"
+      type="text"
+      class="form-control"
+      [(ngModel)]="prenom"
+      placeholder="Votre prénom"
+    />
+  </div>
+
+  <div class="card p-4 shadow-sm">
+    <h4 class="mb-3">{{ question }}</h4>
+
+    <div class="d-grid gap-2">
+      <button
+        class="btn btn-outline-primary"
+        (click)="verifier(reponse1)"
+        [disabled]="boutonsDesactives"
+      >
+        {{ reponse1 }}
+      </button>
+
+      <button
+        class="btn btn-outline-primary"
+        (click)="verifier(reponse2)"
+        [disabled]="boutonsDesactives"
+      >
+        {{ reponse2 }}
+      </button>
+
+      <button
+        class="btn btn-outline-primary"
+        (click)="verifier(reponse3)"
+        [disabled]="boutonsDesactives"
+      >
+        {{ reponse3 }}
+      </button>
+
+      <button
+        class="btn btn-outline-primary"
+        (click)="verifier(reponse4)"
+        [disabled]="boutonsDesactives"
+      >
+        {{ reponse4 }}
+      </button>
+    </div>
+
+    <div class="mt-4 alert alert-info">
+      {{ message }}
+    </div>
+
+    <button
+      class="btn btn-secondary mt-3"
+      (click)="reset()"
+    >
+      Recommencer
+    </button>
+  </div>
+</div>
+
+

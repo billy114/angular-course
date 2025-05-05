@@ -1,0 +1,49 @@
+<div class="container py-5">
+  <h3 class="mb-4">Exercice 1</h3>
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="nameInput" class="form-label">Nom :</label>
+        <input id="nameInput" class="form-control" type="text" [(ngModel)]="inputName">
+      </div>
+      <div class="mb-3">
+        <label for="ageInput" class="form-label">Âge :</label>
+        <input id="ageInput" class="form-control" type="number" [(ngModel)]="inputAge">
+      </div>
+      <button class="btn btn-primary w-100" (click)="onClick()">Valider</button>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Résultat</h5>
+          <p class="card-text">Nom : <strong>{{ name }}</strong></p>
+          <p class="card-text">Âge : <strong>{{ age }}</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="mb-4">Exercice 2</h3>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label for="aInput" class="form-label">A :</label>
+      <input id="aInput" class="form-control" type="number" [(ngModel)]="a">
+    </div>
+    <div class="col-md-6">
+      <label for="bInput" class="form-label">B :</label>
+      <input id="bInput" class="form-control" type="number" [(ngModel)]="b">
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <div class="alert alert-info">
+      Résultat : <strong>{{ getSomme(a, b) }}</strong>
+    </div>
+  </div>
+
+  <h3>Excercice  3 : Qizz </h3>
+  <app-quizz></app-quizz>
+</div>
