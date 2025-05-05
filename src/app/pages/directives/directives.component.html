@@ -1,5 +1,8 @@
-<div class="container mt-5">
-  <h2 class="mb-4 text-center display-4 text-primary">Les directives dans Angular</h2>
+<div class="container my-5">
+  <h2
+    class="mb-4 text-center display-4"
+    [ngClass]="{ 'text-primary' : false }"
+  >Les directives dans Angular</h2>
 
   <div class="row g-4">
     <!-- ngIf Card -->
@@ -80,7 +83,7 @@
       </div>
     </div>
 
-    <!-- ngFor Card -->
+    <!-- ngClass Card -->
     <div class="col-md-6 col-lg-4">
       <div class="card h-100 shadow-lg">
         <div class="card-header bg-primary text-white d-flex align-items-center">
@@ -114,5 +117,38 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-lg">
+        <div class="card-header bg-primary text-white d-flex align-items-center">
+          <i class="bi bi-list-ul me-2"></i>
+          Directive ngClass
+        </div>
+        <div class="card-body">
+
+          <h5 class="card-title text-muted mb-3">Liste de projets</h5>
+          <div class="student-list">
+            @for (project of projects; track project.id){
+              <div class="card mb-2 shadow-sm">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-primary">{{ project.text }}</h6>
+                  <p class="card-text text-muted small">
+                    {{ project.subtext }}
+                  </p>
+                  <div class="badge"
+                    [ngClass]="{'text-bg-success' : project.status === 'Completed',
+                    'text-bg-danger' : project.status === 'Delay',
+                     'text-bg-warning' : project.status === 'Pending'}"
+                  > {{project.status}} </div>
+                </div>
+              </div>
+            }
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
