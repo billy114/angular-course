@@ -13,29 +13,17 @@
       <button class="btn btn-sm btn-secondary" (click)="setStatus('All')">All</button>
     </div>
   </div>
+  <p>Nombre de projets selectionnés : <strong>{{cpt}}</strong></p>
+  <p>Nombre de projets selectionnés Completed : <strong>{{cptCompleted}}</strong></p>
+  <p>Nombre de projets selectionnés Pending : <strong>{{cptPending}}</strong></p>
+  <p>Nombre de projets selectionnés Delay : <strong>{{cptDelay}}</strong></p>
 
   @for (project of projects; track project.id){
     @if (project.status === status || status == 'All'){
-      <div class="card mb-2 shadow-sm">
-        <div class="card-body">
-          <h6 class="card-subtitle mb-2 text-primary">{{ project.text }}</h6>
-          <p class="card-text text-muted small">
-            {{ project.subtext }}
-          </p>
-
-          <ul>
-            @for (technologie of project.technologies; track technologie){
-              <li>{{technologie}}</li>
-            }
-          </ul>
-
-          <div class="badge"
-               [ngClass]="{'text-bg-success' : project.status === 'Completed',
-                    'text-bg-danger' : project.status === 'Delay',
-                     'text-bg-warning' : project.status === 'Pending'}"
-          > {{project.status}} </div>
-        </div>
-      </div>
+      <app-project
+        [project]="project"
+        (emitter)="updateCpt($event)"
+      />
     }
   }
 </div>

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-header-user',
   standalone: true,
   imports: [
     RouterLink
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './header-user.component.html',
+  styleUrl: './header-user.component.scss'
 })
-export class HomeComponent {
+export class HeaderUserComponent {
+
 }

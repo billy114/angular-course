@@ -6,8 +6,18 @@
         <span><i class="bi bi-link-45deg me-2"></i>Binding</span>
         <i class="bi bi-arrow-right-circle"></i>
       </a>
-      <a href="/directives" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+      <a [routerLink]="'directives'" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
         <span><i class="bi bi-link-45deg me-2"></i>Les Directives dans Angular</span>
+        <i class="bi bi-arrow-right-circle"></i>
+      </a>
+
+      <a [routerLink]="'components'" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-link-45deg me-2"></i>Les Components</span>
+        <i class="bi bi-arrow-right-circle"></i>
+      </a>
+
+      <a [routerLink]="'routing'" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-link-45deg me-2"></i>Routing & Navigation</span>
         <i class="bi bi-arrow-right-circle"></i>
       </a>
     </div>

@@ -1,0 +1,23 @@
+<div class="card mb-2 shadow-sm">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-primary">{{ project.text }}</h6>
+    <input class="m-3" type="checkbox" (change)="onChange()"  [(ngModel)]="selected">
+    <p class="card-text text-muted small">
+      {{ project.subtext }}
+    </p>
+
+    <ul>
+      @for (technologie of project.technologies; track technologie){
+        <li>{{technologie}}</li>
+      }
+    </ul>
+
+    <div class="badge"
+         [ngClass]="{'text-bg-success' : project.status === 'Completed',
+                    'text-bg-danger' : project.status === 'Delay',
+                     'text-bg-warning' : project.status === 'Pending'}"
+    > {{project.status}} </div>
+
+  </div>
+
+</div>

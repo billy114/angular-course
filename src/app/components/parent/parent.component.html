@@ -1,0 +1,23 @@
+<div class="container p-5 pt-2 border rounded border-danger">
+
+  <p>La somme est : <strong>{{somme}}</strong></p>
+
+<!--  <input class="form-control my-3" type="text" [(ngModel)]="data">-->
+<!--  <p>on est dans le composant parent</p>-->
+
+<!--  <p>interepteur : <strong>{{interepteur}}</strong></p>-->
+
+  <app-enfant
+    (dataEmitter)="CalculSomme($event)"
+    (emitter)="swichInterepteur()"
+    [student]="student1"
+    [data]="data" #enfantRef/>
+  <hr>
+  <app-enfant
+    (dataEmitter)="CalculSomme($event)"
+    (emitter)="swichInterepteur()"
+    [student]="student2"
+    [data]="data" />
+  <br>
+  <button class="btn btn-success mb-3" (click)="onClick()">Incrementer depuis le parent</button>
+</div>
