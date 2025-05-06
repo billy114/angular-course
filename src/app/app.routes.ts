@@ -5,6 +5,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {BindingPageComponent} from './pages/binding-page/binding-page.component';
 import {BindingExercicesPageComponent} from './pages/binding-exercices-page/binding-exercices-page.component';
 import {DirectivesComponent} from './pages/directives/directives.component';
+import {DirectivesExercicesPageComponent} from './pages/directives-exercices-page/directives-exercices-page.component';
 
 export const routes: Routes = [
   {path: 'landing', component: LandingPageComponent},
@@ -13,4 +14,5 @@ export const routes: Routes = [
   {path: 'binding', component: BindingPageComponent},
   {path: 'directives', component: DirectivesComponent},
   {path: 'binding/exercices', component: BindingExercicesPageComponent},
+  {path: 'directives/exercices', component: DirectivesExercicesPageComponent},
 ];

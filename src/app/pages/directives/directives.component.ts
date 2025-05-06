@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {NgClass} from '@angular/common';
+import {NgClass, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-directives',
   standalone: true,
   imports: [
     FormsModule,
-    NgClass
+    NgClass,
+    NgStyle
   ],
   templateUrl: './directives.component.html',
   styleUrl: './directives.component.scss'
@@ -17,6 +18,44 @@ export class DirectivesComponent {
   selectedColor : string = '';
   colors : string[] = ['red', 'green', 'blue'];
 
+  theme : string = 'dark';
+  setTheme(value : string) : void  {
+    this.theme = value
+  }
+
+  getColor () : string {
+    if (this.theme === 'dark') {
+      return 'white';
+    }else if (this.theme === 'light') {
+      return 'black';
+    }
+    return '';
+  }
+
+  getBackgroundColor () : string {
+    if (this.theme === 'dark') {
+      return 'black';
+    }else if (this.theme === 'light') {
+      return 'white';
+    }
+    return '';
+  }
+  getDynamicStyles() {
+    return {
+      'background': this.theme === 'dark'
+        ? 'linear-gradient(145deg, #1a1a1a, #2d2d2d)'
+        : 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+      'color': this.theme === 'dark' ? '#e9ecef' : '#212529',
+      'border': `2px solid ${this.theme === 'dark' ? '#343a40' : '#ced4da'}`,
+      'box-shadow': this.theme === 'dark'
+        ? '3px 3px 6px #1a1a1a, -3px -3px 6px #2d2d2d'
+        : '3px 3px 6px #d9d9d9, -3px -3px 6px #ffffff',
+      'font-size': '1.1em',
+      'letter-spacing': '0.05em',
+      'transition': 'all 0.3s ease'
+    };
+  }
+  
   students : any [] = [
     {id : 1, name:"John", email:"john@example.com"},
     {id : 2, name:"James", email:"james@example.com"},

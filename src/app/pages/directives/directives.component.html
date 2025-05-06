@@ -149,6 +149,63 @@
       </div>
     </div>
 
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-lg">
+        <div class="card-header bg-primary text-white d-flex align-items-center">
+          <i class="bi bi-palette me-2"></i>
+          Directive ngStyle
+        </div>
+        <div class="card-body">
+          <h5 class="text-muted mb-3">Thème dynamique</h5>
+
+          <!-- Contrôles du thème -->
+          <div class="d-flex gap-2 mb-4">
+            <button
+              class="btn btn-sm"
+              [class.btn-dark]="theme !== 'dark'"
+              [class.btn-outline-dark]="theme === 'dark'"
+              (click)="setTheme('dark')">
+              <i class="bi bi-moon-stars"></i> Sombre
+            </button>
+            <button
+              class="btn btn-sm"
+              [class.btn-light]="theme !== 'light'"
+              [class.btn-outline-light]="theme === 'light'"
+              (click)="setTheme('light')">
+              <i class="bi bi-sun"></i> Clair
+            </button>
+          </div>
+
+          <!-- Exemple 1: Style dynamique simple -->
+          <div class="mb-4">
+            <h6 class="text-muted mb-2">Style basique</h6>
+            <div class="p-3 rounded-2"
+                 [ngStyle]="{
+               'background-color': theme === 'dark' ? '#212529' : '#f8f9fa',
+               'color': theme === 'dark' ? 'white' : 'black',
+               'border': '2px solid ' + (theme === 'dark' ? '#495057' : '#dee2e6'),
+               'transition': 'all 0.3s ease'
+             }">
+              Bonjour le monde !
+            </div>
+          </div>
+
+          <!-- Exemple 2: Style complexe via méthode -->
+          <div>
+            <h6 class="text-muted mb-2">Style calculé</h6>
+            <div class="p-3 rounded-2"
+                 [ngStyle]="getDynamicStyles()">
+              <i class="bi bi-magic me-2"></i>
+              Style dynamique avancé
+              <div class="badge ms-2">{{ theme }} mode</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
   </div>
+
+
 </div>
