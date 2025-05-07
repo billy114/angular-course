@@ -1,7 +1,11 @@
 <div class="card mb-2 shadow-sm">
   <div class="card-body">
 
-    <a [routerLink]="['..', 'project', project.id]">
+<!--    <a [routerLink]="['..', 'project', project.id]">-->
+<!--      <h6 class="card-subtitle mb-2 text-primary">{{ project.text }}</h6>-->
+<!--    </a>-->
+
+    <a (click)="navigateTo()">
       <h6 class="card-subtitle mb-2 text-primary">{{ project.text }}</h6>
     </a>
 

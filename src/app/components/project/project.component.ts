@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgClass} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-project',
@@ -20,8 +20,8 @@ export class ProjectComponent {
 
   selected : boolean = false;
 
-  constructor() {
-  }
+  constructor(private router : Router) {}
+
   onChange() {
     this.emitter.emit({
       selected: this.selected,
@@ -29,5 +29,8 @@ export class ProjectComponent {
     });
   }
 
+  navigateTo(){
+    this.router.navigate(['..', 'project', this.project.id]);
+  }
 
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgClass} from '@angular/common';
 import {ProjectComponent} from '../../components/project/project.component';
 import {ProjectService} from '../../core/services/project.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-directives-exercices-page',
@@ -21,7 +22,9 @@ export class DirectivesExercicesPageComponent implements OnInit {
   cptPending : number = 0;
   cptDelay : number = 0;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    private projectService: ProjectService
+  ) { }
 
   ngOnInit() {
     this.projects = this.projectService.getProjects();
@@ -65,5 +68,7 @@ export class DirectivesExercicesPageComponent implements OnInit {
       }
     }
   }
+
+
 
 }

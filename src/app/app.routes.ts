@@ -13,8 +13,10 @@ import {DashboardUserComponent} from './pages/user/dashboard-user/dashboard-user
 import {ProfilUserComponent} from './pages/user/profil-user/profil-user.component';
 import {ExampleComponent} from './pages/example/example.component';
 import {ProjectComponent} from './pages/project/project.component';
+import {ProduitsComponent} from './pages/produits/produits.component';
 
 export const routes: Routes = [
+
   {path: 'landing', component: LandingPageComponent},
   {path: 'contact', component: ContactPageComponent},
   {path: '', component: HomeComponent},
@@ -30,5 +32,8 @@ export const routes: Routes = [
     ]
   },
   {path: 'services', component: ExampleComponent},
+  {path: 'maison', redirectTo: 'landing'},
+  {path: 'produits', component: ProduitsComponent},
+  {path: '**', component: HomeComponent},
 
 ];
