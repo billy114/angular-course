@@ -1,0 +1,4 @@
+<p>{{ getValue() }}</p>
+
+<input type="number" #valueInput>
+<button class="btn btn-primary" (click)="onClick(+valueInput.value)">update value</button>

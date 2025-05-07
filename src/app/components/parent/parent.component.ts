@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {EnfantComponent} from '../enfant/enfant.component';
 import {FormsModule} from '@angular/forms';
 
@@ -12,7 +12,29 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.scss'
 })
-export class ParentComponent {
+export class ParentComponent implements OnInit, AfterViewInit {
+  isVisible : boolean = true;
+  toogleEnfant(){
+    this.isVisible = !this.isVisible;
+  }
+
+  constructor(){
+    console.log("ParentComponent constructor");
+  }
+  ngOnInit(){
+    console.log("ParentComponent ngOnInit");
+  }
+
+  ngAfterViewInit(): void {
+    console.log("ParentComponent ngAfterViewInit");
+  }
+
+
+
+
+
+
+
   interepteur : boolean = false;
   data : string = "some data !!"
   somme = 0;
@@ -39,5 +61,7 @@ export class ParentComponent {
   CalculSomme(value : number){
     this.somme += value;
   }
+
+
 
 }

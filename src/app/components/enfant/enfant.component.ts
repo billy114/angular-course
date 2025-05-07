@@ -1,4 +1,14 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -10,8 +20,36 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './enfant.component.html',
   styleUrl: './enfant.component.scss'
 })
-export class EnfantComponent {
+export class EnfantComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  constructor() {
+    console.log("EnfantComponent constructor");
+  }
+
+  ngOnInit(): void {
+    console.log("EnfantComponent ngOnInit");
+  }
+
+  ngOnDestroy(): void {
+    console.log("EnfantComponent ngOnDestroy");
+  }
+
+  ngAfterViewInit(): void {
+    console.log("EnfantComponent ngAfterViewInit");
+  }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log("EnfantComponent ngOnChanges", changes);
+  // }
+
   @Input() data : string = "";
+
+
+
+
+
+
+
   @Input() student : any = {};
   @Output() emitter : EventEmitter<any> = new EventEmitter();
   @Output() dataEmitter : EventEmitter<number> = new EventEmitter();
@@ -30,4 +68,12 @@ export class EnfantComponent {
   sendData(value : number){
     this.dataEmitter.emit(value);
   }
+
+
+
+
+
+
+
+
 }

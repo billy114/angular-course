@@ -1,24 +1,31 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgClass} from '@angular/common';
-import {projectData} from './projectdata';
 import {ProjectComponent} from '../../components/project/project.component';
+import {ProjectService} from '../../core/services/project.service';
 
 @Component({
   selector: 'app-directives-exercices-page',
   standalone: true,
   imports: [
-    NgClass,
     ProjectComponent
   ],
   templateUrl: './directives-exercices-page.component.html',
   styleUrl: './directives-exercices-page.component.scss'
 })
-export class DirectivesExercicesPageComponent {
+export class DirectivesExercicesPageComponent implements OnInit {
+  projects : Array<any> = [];
+
   status: string = 'All';
   cpt : number = 0;
   cptCompleted : number = 0;
   cptPending : number = 0;
   cptDelay : number = 0;
+
+  constructor(private projectService: ProjectService) { }
+
+  ngOnInit() {
+    this.projects = this.projectService.getProjects();
+  }
 
   setStatus(status: string) {
     this.status = status;
@@ -58,6 +65,5 @@ export class DirectivesExercicesPageComponent {
       }
     }
   }
-  
-  projects = projectData;
+
 }

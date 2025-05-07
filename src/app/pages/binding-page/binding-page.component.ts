@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
   selector: 'app-binding-page',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './binding-page.component.html',
   styleUrl: './binding-page.component.scss'

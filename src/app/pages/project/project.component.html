@@ -1,11 +1,9 @@
 <div class="card mb-2 shadow-sm">
   <div class="card-body">
 
-    <a [routerLink]="['..', 'project', project.id]">
-      <h6 class="card-subtitle mb-2 text-primary">{{ project.text }}</h6>
-    </a>
 
-    <input class="m-3" type="checkbox" (change)="onChange()"  [(ngModel)]="selected">
+      <h6 class="card-subtitle mb-2 text-primary">{{ project.text }}</h6>
+
     <p class="card-text text-muted small">
       {{ project.subtext }}
     </p>
