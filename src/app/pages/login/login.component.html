@@ -1,0 +1,13 @@
+<div class="container py-5">
+  @if (error) {
+    <div class="alert alert-danger w-50">Username or password incorrect !!</div>
+  }
+
+  <input type="text" class="w-50 form-control mb-3" placeholder="username" #usernameInput>
+  <input type="password" class="w-50 form-control mb-3" placeholder="password" #passwordInput>
+  <button class="btn btn-primary" (click)="submit(usernameInput.value, passwordInput.value)">Login</button>
+
+  @if (user) {
+    <h1>Bonjour {{user.firstName}}</h1>
+  }
+</div>

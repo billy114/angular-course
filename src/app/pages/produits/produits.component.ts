@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ProduitService} from '../../core/services/api/produit.service';
 import {Produit} from '../../core/models/produit';
+import {DecimalPipe} from '@angular/common';
 
 @Component({
   selector: 'app-produits',
   standalone: true,
-  imports: [],
+  imports: [
+    DecimalPipe
+  ],
   templateUrl: './produits.component.html',
   styleUrl: './produits.component.scss'
 })

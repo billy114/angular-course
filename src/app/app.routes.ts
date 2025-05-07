@@ -14,6 +14,7 @@ import {ProfilUserComponent} from './pages/user/profil-user/profil-user.componen
 import {ExampleComponent} from './pages/example/example.component';
 import {ProjectComponent} from './pages/project/project.component';
 import {ProduitsComponent} from './pages/produits/produits.component';
+import {LoginComponent} from './pages/login/login.component';
 
 export const routes: Routes = [
 
@@ -34,6 +35,7 @@ export const routes: Routes = [
   {path: 'services', component: ExampleComponent},
   {path: 'maison', redirectTo: 'landing'},
   {path: 'produits', component: ProduitsComponent},
+  {path: 'login', component: LoginComponent},
   {path: '**', component: HomeComponent},
 
 ];
