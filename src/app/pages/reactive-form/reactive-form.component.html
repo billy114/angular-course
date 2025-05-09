@@ -1,31 +1,131 @@
-<div class="container my-5">
-  <label class="mb-2">Name : </label>
-  <input class="form-control w-75 mb-3" type="text" [formControl]="nameFormControl">
-  @if (nameFormControl.invalid && nameFormControl.dirty) {
-<!--    @if (nameFormControl.hasError('required')){-->
-<!--      <p class="text-danger">champs obligatoire !</p>-->
-<!--    }-->
-    @if (nameFormControl.errors?.['required']){
-      <p class="text-danger">champs obligatoire !</p>
-    }
-    @if (nameFormControl.hasError('minlength')){
-      <p class="text-danger">Minimum 6 charactères !</p>
-    }
-  }
+<div class="container py-5">
+  <form [formGroup]="signForm" (submit)="onSubmit()">
+<!--    name-->
+    <div>
+      <label class="mb-2">Name : </label>
+      <input
+        class="form-control w-75 mb-3"
+        type="text"
+        [formControl]="name"
+        [ngClass]="{ 'is-invalid' : name.invalid && (name.dirty || submitted)}"
+      >
+      @if (name.invalid && (name.dirty || submitted)) {
 
-  <label class="mb-2">Mot de passe : </label>
-  <input class="form-control w-75 mb-3" type="text" [formControl]="password">
-  @if (password.invalid && password.dirty){
-    @if (password.hasError('pattern')){
-      <p class="text-danger">le mot de passe doit contenir .... !!</p>
-    }
-  }
+        @if (name.errors?.['required']){
+          <div class="invalid-feedback">champs obligatoire !</div>
+        }
+      }
+    </div>
 
-  <label class="mb-2">Confirmer votre mot de passe : </label>
-  <input class="form-control w-75 mb-3" type="text" [formControl]="confPssword">
+<!--    email-->
+    <div>
+      <label class="mb-2">Email : </label>
+      <input
+        class="form-control w-75 mb-3"
+        type="text"
+        formControlName="email"
+        [ngClass]="{ 'is-invalid' : email.invalid && email.dirty}"
+      >
+      @if ( email.invalid ){
+        @if (email.hasError('required')){
+          <div class="invalid-feedback">email obligatoire !!</div>
+        }
+        @if (email.hasError('email')){
+          <div class="invalid-feedback">email invalid  !!</div>
+        }
+      }
+    </div>
 
-  @if (password.value !== confPssword.value){
-    <p class="text-danger">Les 2 mots de passe doivent être identiques !</p>
-  }
+<!--    language de programmation-->
+<!--    <div class="border rounded p-4 mb-3">-->
+<!--      <label class="mb-2">Languages de programmation : </label>-->
 
+<!--      @for (language of languages.controls; let i = $index; track i){-->
+<!--        <div class="d-flex gap-2 mb-3">-->
+<!--          <input class="form-control w-50" type="text" [formControl]="language">-->
+<!--          <button type="button" class="btn btn-danger" (click)="delete(i)">Supprimer</button>-->
+<!--        </div>-->
+<!--      }-->
+<!--      <button type="button" class="btn btn-success" (click)="add()">Ajouter language</button>-->
+<!--    </div>-->
+
+    <div class="border rounded p-4 mb-3" formArrayName="languages">
+      <label class="mb-2">Languages de programmation : </label>
+
+      @for (language of languages.controls; let i = $index; track i){
+        <div class="d-flex gap-2 mb-3">
+          <input class="form-control w-50" type="text" [formControlName]="i">
+          <button type="button" class="btn btn-danger" (click)="delete(i)">Supprimer</button>
+        </div>
+        @if ( language.invalid ){
+          @if (language.hasError('required')){
+            <div class="invalid-feedback">Champs obligatoire !!</div>
+          }
+        }
+      }
+      <button type="button" class="btn btn-success" (click)="add()">Ajouter language</button>
+    </div>
+
+    <button class="ms-3 btn btn-primary" type="submit" [disabled]="signForm.invalid">Valider</button>
+
+  </form>
 </div>
+
+
+
+<!--<div class="container my-5">-->
+<!--  <label class="mb-2">Name : </label>-->
+<!--  <input-->
+<!--    class="form-control w-75 mb-3"-->
+<!--    type="text"-->
+<!--    [formControl]="nameFormControl"-->
+<!--    [ngClass]="{ 'is-invalid' : nameFormControl.invalid && nameFormControl.dirty}"-->
+<!--  >-->
+<!--  @if (nameFormControl.invalid && nameFormControl.dirty) {-->
+
+<!--    @if (nameFormControl.errors?.['required']){-->
+<!--      <div class="invalid-feedback">champs obligatoire !</div>-->
+<!--    }-->
+<!--    @if (nameFormControl.hasError('minlength')){-->
+<!--      <div class="invalid-feedback">Minimum 6 charactères !</div>-->
+<!--    }-->
+<!--  }-->
+
+<!--  <label class="mb-2">Email : </label>-->
+<!--  <input class="form-control w-75 mb-3" type="text" [formControl]="email">-->
+<!--  @if (email.invalid ){-->
+<!--    @if (email.hasError('email')){-->
+<!--      <p class="text-danger">email invalid .... !!</p>-->
+<!--    }-->
+<!--  }-->
+
+<!--  <label class="mb-2">Mot de passe : </label>-->
+<!--  <input class="form-control w-75 mb-3" type="text" [formControl]="password">-->
+<!--  @if (password.invalid && password.dirty){-->
+<!--    @if (password.hasError('pattern')){-->
+<!--      <p class="text-danger">le mot de passe doit contenir .... !!</p>-->
+<!--    }-->
+<!--  }-->
+
+<!--  <label class="mb-2">Confirmer votre mot de passe : </label>-->
+<!--  <input class="form-control w-75 mb-3" type="text" [formControl]="confPssword">-->
+
+<!--  @if (password.value !== confPssword.value){-->
+<!--    <p class="text-danger">Les 2 mots de passe doivent être identiques !</p>-->
+<!--  }-->
+
+<!--  <label>Languages de programmation : </label>-->
+<!--  <div class="border rounded p-4">-->
+<!--    @for (language of languages.controls; let i = $index; track i){-->
+<!--      <div class="d-flex gap-2 mb-3">-->
+<!--        <input class="form-control w-50" type="text" [formControl]="language">-->
+<!--        <button class="btn btn-danger" (click)="delete(i)">Supprimer</button>-->
+<!--      </div>-->
+<!--    }-->
+<!--    <button class="btn btn-success" (click)="add()">Ajouter language</button>-->
+
+<!--    <button class="ms-3 btn btn-primary" (click)="onClick()">Valider</button>-->
+
+<!--  </div>-->
+
+<!--</div>-->
