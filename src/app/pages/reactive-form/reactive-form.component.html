@@ -1,0 +1,31 @@
+<div class="container my-5">
+  <label class="mb-2">Name : </label>
+  <input class="form-control w-75 mb-3" type="text" [formControl]="nameFormControl">
+  @if (nameFormControl.invalid && nameFormControl.dirty) {
+<!--    @if (nameFormControl.hasError('required')){-->
+<!--      <p class="text-danger">champs obligatoire !</p>-->
+<!--    }-->
+    @if (nameFormControl.errors?.['required']){
+      <p class="text-danger">champs obligatoire !</p>
+    }
+    @if (nameFormControl.hasError('minlength')){
+      <p class="text-danger">Minimum 6 charactères !</p>
+    }
+  }
+
+  <label class="mb-2">Mot de passe : </label>
+  <input class="form-control w-75 mb-3" type="text" [formControl]="password">
+  @if (password.invalid && password.dirty){
+    @if (password.hasError('pattern')){
+      <p class="text-danger">le mot de passe doit contenir .... !!</p>
+    }
+  }
+
+  <label class="mb-2">Confirmer votre mot de passe : </label>
+  <input class="form-control w-75 mb-3" type="text" [formControl]="confPssword">
+
+  @if (password.value !== confPssword.value){
+    <p class="text-danger">Les 2 mots de passe doivent être identiques !</p>
+  }
+
+</div>

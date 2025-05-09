@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import {LandingPageComponent} from './pages/landing-page/landing-page.component';
 import {ContactPageComponent} from './pages/contact-page/contact-page.component';
 import {HomeComponent} from './pages/home/home.component';
-import {BindingPageComponent} from './pages/binding-page/binding-page.component';
 import {BindingExercicesPageComponent} from './pages/binding-exercices-page/binding-exercices-page.component';
 import {DirectivesComponent} from './pages/directives/directives.component';
 import {DirectivesExercicesPageComponent} from './pages/directives-exercices-page/directives-exercices-page.component';
@@ -15,6 +14,7 @@ import {ExampleComponent} from './pages/example/example.component';
 import {ProjectComponent} from './pages/project/project.component';
 import {ProduitsComponent} from './pages/produits/produits.component';
 import {LoginComponent} from './pages/login/login.component';
+import {ReactiveFormComponent} from './pages/reactive-form/reactive-form.component';
 
 export const routes: Routes = [
 
@@ -36,6 +36,7 @@ export const routes: Routes = [
   {path: 'maison', redirectTo: 'landing'},
   {path: 'produits', component: ProduitsComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'reactive-form', component: ReactiveFormComponent},
   {path: '**', component: HomeComponent},
 
 ];
